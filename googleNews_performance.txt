@@ -1,0 +1,430 @@
+===========================================================
+Base Multi-Layered Perceptron Model for --> Emotions
+Default Parameters: {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[ 964   38   13    9   37   12    2   24    7   12   18    4    2   23
+     2   84    1   75  126    0  610   24    5    2    1    1    6   32]
+ [  43  559   15   13    5    0    4   24    1    3    6    2    3    2
+     0   17    0   46   14    0  430   10    0    1    0    6    5   24]
+ [   9   17  243   71    4    3    6   46    1    7   31   17    1    0
+     9    7    0    7    4    0  544    2    0    0    0   10   11   12]
+ [  28   48  119  115    6    7   14   66    4   30   60   25    6    2
+     8   14    0    7   18    2 1054    6    0    5    1    4   19   20]
+ [ 120   35   23   17  134   22   14   56   22   21   45    9    1    5
+     4   25    1   37   52    1 1514   31    1    5    2    7    9   13]
+ [  15    9    7    7    6   89    4   11    5    5    9    2    0    2
+     1   11    0   17    9    1  406   31    0    0    1   11    9    1]
+ [  12   14    7    9    5    2  107  167    1    3   19    2    0    0
+     2    6    0    6    6    0  567    2    0    6    0    1    6   15]
+ [  14   15   12    9    4    3   36  399    3    9    5    2    0    1
+     5    6    0    4   10    0  570    6    0    0    0    4    4   22]
+ [  12    7    3    1    3    1    4   13   97    3    2    0    1    3
+     2    3    0    9   23    0  219   25    0    0    1    2    1    4]
+ [  10   16   23   25    5    3    7   24    6   80   27    9    6    3
+    12    6    1    6    8    0  595    7    0    3    0   19   48   21]
+ [  24   29   36   34   15    5   24   34    4   38  177   13    2    0
+     7   10    1    6    8    0 1016    6    0    6    0   17   14   11]
+ [   5    7   51   30    8    1    3   11    1   13   12   96    5    1
+    14    2    0    3    2    0  301    3    0    0    0    0   10    6]
+ [   3    8    9   11    2    1    3    5    0    5    5    4   34    0
+     2    3    0    1    4    0  184    1    0    2    0    8    6    2]
+ [  52   19    4    5    5    1    1   33    2    2    6    2    0   67
+     2   13    1   39   17    2  293    6    0    0    0    1    2   22]
+ [   6    4    6    4    1    1    3    5    0    6    4    8    2    0
+    95    0    0    1    0    6  155    3    0    0    0    2    2    3]
+ [  73   11    3    1    7   11    2    6    3    1    1    0    0    2
+     0 1070    0   39   13    0  134    8    1    0    1   17    4    1]
+ [   1    0    2    0    0    0    1    2    0    0    0    0    0    0
+     3    3    2    0    0    0   29    0    0    0    0    2   12    1]
+ [  64   84    5    0   11    6    1   14    8    6    3    1    1   19
+     2   31    1  194   63    0  275    4    0    2    5    0    8    6]
+ [  70   18    5    0    5    4    0   14    4    1    1    2    0    4
+     0   16    0   33  595    0  213   10    0    0    0    2    2    5]
+ [   3    0    4    5    0    2    2    4    0    8    3    0    2    0
+    11    1    0    3    0   18  109    4    0    0    0    1    6    1]
+ [ 314  229  176  134  115   72  128  507   52   96  262   49   15   47
+    50   88    6  105  158    6 8169   71    2   20    7   31   64   94]
+ [  43   15    3    4   12   21    5   14   28    9    6    2    2    6
+     3   37    1   24   19    0  468  178    1    0    1    2    4    6]
+ [  23    3    3    0    2    1    0    1    2    2    2    1    0    0
+     0    2    0    8    2    0   99    2    3    0    0    0    1    0]
+ [  23   27   14    7   23    6   10   18    3    7   19    6    2    3
+     1    9    1    9   13    0  699    7    0   21    1   10    5   28]
+ [  10    1    1    2    5    7    2    1    0    2    3    0    0    0
+     1   13    0   14    5    0   79    2    0    0    3    0    3    2]
+ [   2    7    3    2    0    1    2    8    1    7    2    1    1    0
+     0   11    1    0    0    1   89    3    0    2    0  107   20    1]
+ [  10    8   14    8    4    8    3   10    2   67   27    6    4    0
+     8    7    3   10    9    2  354    5    0    4    1   71  150    0]
+ [  35   12   13    4    3    1    7   39    2    7   14    5    1   11
+     6    4    1    9    6    1  332    5    0    4    0    1    2  166]]
+
+Classification Report:
+----------------------
+
+                precision    recall  f1-score   support
+
+    admiration       0.48      0.45      0.47      2134
+     amusement       0.45      0.45      0.45      1233
+         anger       0.30      0.23      0.26      1062
+     annoyance       0.22      0.07      0.10      1688
+      approval       0.31      0.06      0.10      2226
+        caring       0.31      0.13      0.19       669
+     confusion       0.27      0.11      0.16       965
+     curiosity       0.26      0.35      0.30      1143
+        desire       0.37      0.22      0.28       439
+disappointment       0.18      0.08      0.11       970
+   disapproval       0.23      0.12      0.15      1537
+       disgust       0.36      0.16      0.23       585
+ embarrassment       0.37      0.11      0.17       303
+    excitement       0.33      0.11      0.17       597
+          fear       0.38      0.30      0.34       317
+     gratitude       0.71      0.76      0.74      1409
+         grief       0.10      0.03      0.05        58
+           joy       0.27      0.24      0.25       814
+          love       0.50      0.59      0.54      1004
+   nervousness       0.45      0.10      0.16       187
+       neutral       0.42      0.74      0.53     11067
+      optimism       0.39      0.19      0.26       914
+         pride       0.23      0.02      0.04       157
+   realization       0.25      0.02      0.04       972
+        relief       0.12      0.02      0.03       156
+       remorse       0.32      0.39      0.35       272
+       sadness       0.35      0.19      0.24       795
+      surprise       0.32      0.24      0.27       691
+
+      accuracy                           0.41     34364
+     macro avg       0.33      0.23      0.25     34364
+  weighted avg       0.37      0.41      0.36     34364
+
+
+===========================================================
+Base Multi-Layered Perceptron Model for --> Sentiments
+Default Parameters: {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[1133  842 1202  594]
+ [ 370 4779 1722  903]
+ [ 930 2746 5230 2161]
+ [ 450 1467 2361 7474]]
+
+Classification Report:
+----------------------
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.39      0.30      0.34      3771
+    negative       0.49      0.61      0.54      7774
+     neutral       0.50      0.47      0.48     11067
+    positive       0.67      0.64      0.65     11752
+
+    accuracy                           0.54     34364
+   macro avg       0.51      0.51      0.51     34364
+weighted avg       0.54      0.54      0.54     34364
+
+
+===========================================================
+Base Multi-Layered Perceptron Model for --> Emotions
+Default Parameters: {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 2, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[  911    27     5     5     6     5     0     6     0     1     0     0
+      0     1     0    59     0    20    80     0   975    20     0     0
+      0     0     3    10]
+ [   48   335     2     2     0     1     0     5     0     0     2     1
+      0     1     0    10     0    16    10     0   790     4     0     0
+      0     2     3     1]
+ [    7    18    94    19     0     6     0    14     0     1     1     9
+      0     0     0     3     0     1    11     0   867     2     0     0
+      0     0     8     1]
+ [   23    24    21    19     0     3     0    10     0     0     6     7
+      0     0     2     8     0     3    14     0  1523     5     0     0
+      0     0    17     3]
+ [  112    18     5     6    32     4     0     4     1     2    10     2
+      0     0     0    25     0     7    46     0  1924    16     0     0
+      0     1     8     3]
+ [   27     1     0     0     0    28     0     1     1     0     0     0
+      0     0     0     9     0     5    11     0   544    26     0     0
+      0     3    13     0]
+ [   13     7     1     3     2     2     4    39     0     0     1     1
+      0     0     2     5     0     1     7     0   869     0     0     0
+      0     0     6     2]
+ [   15     9     4     2     2     2     3   106     0     0     0     1
+      0     1     0     6     0     0     6     0   978     3     0     0
+      0     0     1     4]
+ [   16     3     0     0     0     0     0     2    28     0     1     0
+      0     0     1     8     0     2    19     0   336    20     0     0
+      0     0     3     0]
+ [   12    10     3     3     0     0     1     1     0     3     1     1
+      0     0     1     3     0     2     6     0   871     6     0     0
+      0     2    44     0]
+ [   18    13     2     5     7     2     1     5     0     4    31     7
+      0     0     0     9     0     2     9     0  1403     2     0     0
+      0     1    15     1]
+ [   11    13    17    11     1     1     0     0     0     2     2    31
+      0     0     2     1     0     0     7     0   469     0     0     0
+      0     0    13     4]
+ [    4     8     1     5     0     0     0     0     0     0     0     1
+      0     0     1     1     0     0     2     0   269     1     0     0
+      0     1     9     0]
+ [   57     5     2     1     0     0     0     4     0     0     0     0
+      0     4     0    12     0    32    16     0   449     3     0     0
+      0     0     5     7]
+ [    4     1     1     0     0     0     0     0     0     1     0     3
+      0     0    17     0     0     0     0     0   275     2     0     0
+      0     0    10     3]
+ [   59     3     0     0     0    10     0     0     0     0     0     0
+      0     0     0   987     0    12    12     0   308    12     0     0
+      0     0     6     0]
+ [    0     0     1     0     0     0     0     1     0     0     0     0
+      0     0     0     2     0     0     0     0    47     0     0     0
+      0     0     7     0]
+ [   82    47     1     0     2     1     0     1     1     0     0     0
+      0     1     0    27     0    82    49     0   505    11     0     0
+      0     0     4     0]
+ [   64    16     0     1     2     2     0     0     0     0     0     0
+      0     0     0    10     0     5   501     0   399     3     0     0
+      0     0     1     0]
+ [    0     1     0     1     1     0     0     0     0     0     1     1
+      0     0     6     1     0     0     0     0   165     0     0     0
+      0     0     9     1]
+ [  296   120    37    21    23    35     1   118     8     1    25    12
+      0     6     9    77     0    36    93     0 10040    40     0     0
+      0     4    47    18]
+ [   48     5     0     0     1    13     0     2     4     0     1     0
+      0     0     0    15     0     4    10     0   689   114     0     0
+      0     0     6     2]
+ [   28     2     1     0     0     1     0     0     0     0     0     0
+      0     0     0     8     0     3     2     0   109     2     0     0
+      0     0     1     0]
+ [   16    11     0     2     0     0     0     2     1     0     2     0
+      0     0     0     5     0     1     7     0   918     1     0     0
+      0     0     4     2]
+ [   12     2     0     1     1     2     0     1     0     0     0     0
+      0     0     0    11     0     4     2     0   114     1     0     0
+      0     0     5     0]
+ [    1    10     1     0     0     1     0     0     1     0     0     0
+      0     0     0    11     0     0     1     0   188     2     0     0
+      0    28    28     0]
+ [   12    10     2     3     0     1     0     3     0     0     2     1
+      0     0     2     8     0     3    10     0   585     5     0     0
+      0    16   132     0]
+ [   40    13     3     1     1     3     2    11     1     0     2     0
+      0     1     0     5     0     3     2     0   578     0     0     0
+      0     0     2    23]]
+
+Classification Report:
+----------------------
+
+                precision    recall  f1-score   support
+
+    admiration       0.47      0.43      0.45      2134
+     amusement       0.46      0.27      0.34      1233
+         anger       0.46      0.09      0.15      1062
+     annoyance       0.17      0.01      0.02      1688
+      approval       0.40      0.01      0.03      2226
+        caring       0.23      0.04      0.07       669
+     confusion       0.33      0.00      0.01       965
+     curiosity       0.32      0.09      0.14      1143
+        desire       0.61      0.06      0.12       439
+disappointment       0.20      0.00      0.01       970
+   disapproval       0.35      0.02      0.04      1537
+       disgust       0.40      0.05      0.09       585
+ embarrassment       0.00      0.00      0.00       303
+    excitement       0.27      0.01      0.01       597
+          fear       0.40      0.05      0.09       317
+     gratitude       0.74      0.70      0.72      1409
+         grief       0.00      0.00      0.00        58
+           joy       0.34      0.10      0.16       814
+          love       0.54      0.50      0.52      1004
+   nervousness       0.00      0.00      0.00       187
+       neutral       0.37      0.91      0.52     11067
+      optimism       0.38      0.12      0.19       914
+         pride       0.00      0.00      0.00       157
+   realization       0.00      0.00      0.00       972
+        relief       0.00      0.00      0.00       156
+       remorse       0.48      0.10      0.17       272
+       sadness       0.32      0.17      0.22       795
+      surprise       0.27      0.03      0.06       691
+
+      accuracy                           0.39     34364
+     macro avg       0.30      0.14      0.15     34364
+  weighted avg       0.36      0.39      0.29     34364
+
+
+===========================================================
+Base Multi-Layered Perceptron Model for --> Sentiments
+Default Parameters: {'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (100,), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_fun': 15000, 'max_iter': 2, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': None, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[ 441  655 1722  953]
+ [ 147 3696 2482 1449]
+ [ 330 1875 5955 2907]
+ [ 140 1156 2456 8000]]
+
+Classification Report:
+----------------------
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.42      0.12      0.18      3771
+    negative       0.50      0.48      0.49      7774
+     neutral       0.47      0.54      0.50     11067
+    positive       0.60      0.68      0.64     11752
+
+    accuracy                           0.53     34364
+   macro avg       0.50      0.45      0.45     34364
+weighted avg       0.52      0.53      0.51     34364
+
+
+===========================================================
+Top Multi-Layered Perceptron Model for --> Emotions
+Provided Hyper-Parameters: {'activation': ('relu', 'logistic'), 'hidden_layer_sizes': ((80,), (10, 10)), 'solver': ('adam', 'sgd'), 'max_iter': [30], 'learning_rate_init': [0.01], 'learning_rate': ['constant'], 'batch_size': [300]}
+Best Estimator: MLPClassifier(activation='logistic', batch_size=300, hidden_layer_sizes=(80,),
+              learning_rate_init=0.01, max_iter=30)
+Best Parameters: {'activation': 'logistic', 'batch_size': 300, 'hidden_layer_sizes': (80,), 'learning_rate': 'constant', 'learning_rate_init': 0.01, 'max_iter': 30, 'solver': 'adam'}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[1069   18    8    2    6    7    0    9    1    3    7    5    1    3
+     2   46    0   29  107    0  751   21    3    1    0    0    5   30]
+ [  52  411    6    1    0    0    1    9    0    0    3    6    4    0
+     1    9    0   26   20    0  652    5    0    0    0    3   11   13]
+ [  13    5  215   17    1    1    1    9    0    1    6   22    1    0
+     6    4    0    2    0    0  741    1    0    0    0    5    7    4]
+ [  37   22   98   32    0    3    2   16    2    5   15   22    5    0
+     6   12    0    5   18    3 1351    3    0    0    0    3   18   10]
+ [ 124   16    9    4   46   10    2   14    9    1   14    8    1    4
+     5   18    1   12   46    0 1843   14    0    0    0    3   14    8]
+ [  20    3    3    0    0   69    1    3    3    0    1    1    0    0
+     0    5    1    6   14    1  487   29    0    0    0    8   13    1]
+ [  17    8    8    1    2    2   29   59    0    0    8    2    1    0
+     2    7    0    1    8    0  794    0    0    1    0    2    6    7]
+ [  25    8   12    3    4    2    8  163    2    0    0    2    2    3
+     1    8    0    0   12    1  869    2    0    0    0    1    3   12]
+ [  13    3    2    0    0    0    1    4   62    0    0    0    0    0
+     2    1    0    1   22    0  301   23    0    0    0    1    2    1]
+ [  22   12   17    3    0    0    2    4    1   20    3   10    1    0
+    12    6    0    3   11    2  763    8    0    0    0    8   51   11]
+ [  31   15   15    6    2    1    1    2    1    1   46   10    1    0
+     5   10    0    2   12    1 1342    4    0    1    0   10   14    4]
+ [   7    6   45    7    1    0    0    2    0    0    3   84    3    0
+     5    2    0    0    1    0  403    0    0    0    0    1   12    3]
+ [   4    2    5    4    1    0    0    2    0    0    1    3   23    0
+     2    2    0    0    5    0  231    1    0    1    0    5    9    2]
+ [  56    5    8    0    1    0    0   10    2    0    1    1    0   32
+     3    6    1   24   19    1  402    8    0    0    0    0    1   16]
+ [   5    3    2    0    0    0    0    1    0    1    1    3    1    0
+    93    0    0    0    1    3  196    1    0    0    0    0    4    2]
+ [  77    3    1    0    0   12    0    1    2    1    1    0    0    1
+     0 1028    1   23   10    0  217   10    0    0    1    9    9    2]
+ [   0    0    3    0    0    1    0    0    0    1    0    0    0    0
+     3    1    0    0    0    0   37    0    0    0    0    1   11    0]
+ [  86   49    4    0    0    1    0    2    1    1    0    0    0   12
+     3   21    1  141   58    0  412    4    1    0    1    1    9    6]
+ [  69   10    4    0    2    3    0    3    1    0    1    1    0    1
+     0    4    0    8  641    0  248    3    0    0    0    0    3    2]
+ [   2    0    3    0    1    2    1    0    0    1    0    1    0    0
+    15    1    0    4    0    7  143    0    0    0    0    1    5    0]
+ [ 321  117  119   16   35   41    9  130   25    8   41   37   13   17
+    26   59    6   39  127    4 9695   41    1    2    1   22   61   54]
+ [  43    8    0    1    1   19    0    2   11    0    5    0    0    1
+     4   14    0    8   17    0  610  157    0    0    0    1    8    4]
+ [  29    3    1    0    1    0    0    0    0    1    1    1    0    1
+     0    1    0    7    3    0   99    3    4    0    0    0    2    0]
+ [  23   12    4    0    1    2    2    6    2    0    3    2    0    0
+     4    7    0    2   10    0  854    3    0    7    0    4    6   18]
+ [  12    0    0    0    1    6    0    1    0    0    0    0    1    0
+     0   11    0    8    2    0  108    0    0    0    0    0    5    1]
+ [   2    6    4    0    0    1    0    0    1    0    0    1    1    0
+     1    6    0    1    1    1  133    1    0    0    0   82   29    1]
+ [   6    8    8    3    1    3    1    0    2    6    3    8    0    0
+     4    6    2    4    9    0  486    5    0    1    0   46  182    1]
+ [  44    4   10    2    1    2    2   17    0    0    1    4    0    1
+     4    1    0    3    3    0  471    2    0    0    0    0    0  119]]
+
+Classification Report:
+----------------------
+
+                precision    recall  f1-score   support
+
+    admiration       0.48      0.50      0.49      2134
+     amusement       0.54      0.33      0.41      1233
+         anger       0.35      0.20      0.26      1062
+     annoyance       0.31      0.02      0.04      1688
+      approval       0.43      0.02      0.04      2226
+        caring       0.37      0.10      0.16       669
+     confusion       0.46      0.03      0.06       965
+     curiosity       0.35      0.14      0.20      1143
+        desire       0.48      0.14      0.22       439
+disappointment       0.39      0.02      0.04       970
+   disapproval       0.28      0.03      0.05      1537
+       disgust       0.36      0.14      0.21       585
+ embarrassment       0.39      0.08      0.13       303
+    excitement       0.42      0.05      0.10       597
+          fear       0.44      0.29      0.35       317
+     gratitude       0.79      0.73      0.76      1409
+         grief       0.00      0.00      0.00        58
+           joy       0.39      0.17      0.24       814
+          love       0.54      0.64      0.59      1004
+   nervousness       0.29      0.04      0.07       187
+       neutral       0.39      0.88      0.54     11067
+      optimism       0.45      0.17      0.25       914
+         pride       0.44      0.03      0.05       157
+   realization       0.50      0.01      0.01       972
+        relief       0.00      0.00      0.00       156
+       remorse       0.38      0.30      0.34       272
+       sadness       0.36      0.23      0.28       795
+      surprise       0.36      0.17      0.23       691
+
+      accuracy                           0.42     34364
+     macro avg       0.39      0.20      0.22     34364
+  weighted avg       0.42      0.42      0.34     34364
+
+
+===========================================================
+Top Multi-Layered Perceptron Model for --> Sentiments
+Provided Hyper-Parameters: {'activation': ('relu', 'logistic'), 'hidden_layer_sizes': ((80,), (10, 10)), 'solver': ('adam', 'sgd'), 'max_iter': [30], 'learning_rate_init': [0.01], 'learning_rate': ['constant'], 'batch_size': [300]}
+Best Estimator: MLPClassifier(activation='logistic', batch_size=300, hidden_layer_sizes=(80,),
+              learning_rate_init=0.01, max_iter=30)
+Best Parameters: {'activation': 'logistic', 'batch_size': 300, 'hidden_layer_sizes': (80,), 'learning_rate': 'constant', 'learning_rate_init': 0.01, 'max_iter': 30, 'solver': 'adam'}
+===========================================================
+
+Confusion Matrix:
+-----------------
+
+[[1103  644 1422  602]
+ [ 364 4197 2316  897]
+ [ 831 2118 5934 2184]
+ [ 397 1274 2624 7457]]
+
+Classification Report:
+----------------------
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.41      0.29      0.34      3771
+    negative       0.51      0.54      0.52      7774
+     neutral       0.48      0.54      0.51     11067
+    positive       0.67      0.63      0.65     11752
+
+    accuracy                           0.54     34364
+   macro avg       0.52      0.50      0.51     34364
+weighted avg       0.54      0.54      0.54     34364
+
+
